@@ -18,15 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+from apps.game.views import QuestionModelViewSet, QuestionAnswersModelViewSet, UserAnswerApiView
 from apps.users.views import LoginView, SignUpApiView
 
 router = routers.DefaultRouter()
-# router.register(r'users', UserViewSet)
+router.register(r'questions', QuestionModelViewSet)
+router.register(r'questions-answers', QuestionAnswersModelViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include(router.urls)),
     url(r'^login/', LoginView.as_view()),
     url(r'^signup/', SignUpApiView.as_view()),
+    url(r'^user_answer/', UserAnswerApiView.as_view()),
     url(r'^api-auth/', include('rest_framework.urls'))
 ]
