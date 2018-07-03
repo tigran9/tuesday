@@ -1,3 +1,7 @@
 .idea/*
 *.pyc
 static/*
+runserver
+migrate
+makemigrations
+createsuperuser
